@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 export async function getStaticProps() {
   
-  const res = await fetch('https://wallhaven.cc/api/v1/search?&sorting=latest');
+  const res = await fetch('https://wallhaven.cc/api/v1/search?&sorting=random');
   const data = await res.json();
   const images = data.data;
   
@@ -15,7 +15,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function latest({ images }) {
+export default function random({ images }) {
 
   return (
     <div>
@@ -26,7 +26,7 @@ export default function latest({ images }) {
         <ul className='grid grid-cols-4'>
           {images.map((image) => (
             <li key={image.id}>
-              <img className='p-3' src={image.thumbs.small} alt={image.id} />
+              <img className='p-1 rounded-xl' src={image.thumbs.small} alt={image.id} />
             </li>
           ))}
         </ul>
